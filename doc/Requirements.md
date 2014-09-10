@@ -18,4 +18,4 @@
 
 ## Use case diagram ##
 
-![alt text](https://www.dropbox.com/s/7eldrjbqh8si9vg/capture-20140911-051308.png)
+![alt text](https://www.dropbox.com/s/7eldrjbqh8si9vg/capture-20140911-051308.png?dl=0)
