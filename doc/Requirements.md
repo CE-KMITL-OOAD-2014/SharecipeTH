@@ -27,3 +27,16 @@
 - **Use case purpose :**
 - **Preconditions :**
 - **Postconditions :**
+- **Limitations :**
+- **Assumptions :**
+- **Primary Scenario :**
+- **Alternate Scenario :** 
+
+#### **2. Use case name :** ####
+- **Use case purpose :**
+- **Preconditions :**
+- **Postconditions :**
+- **Limitations :**
+- **Assumptions :**
+- **Primary Scenario :**
+- **Alternate Scenario :** 
