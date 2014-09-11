@@ -30,8 +30,8 @@
 - **Limitations :**
 - **Assumptions :**
 - **Primary Scenario :**
-    A.
-    B.
+A.
+B.
 - **Alternate Scenario :** 
 
 #### **2. Use case name :** ค้นหาสูตรอาหาร (Search recipe) ####
