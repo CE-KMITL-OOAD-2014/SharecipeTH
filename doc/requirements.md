@@ -65,7 +65,9 @@
 
 ## Activity diagrams ##
 
-**1.Use case :** ลบสูตรอาหาร (Delete Recipe)
+**1.Use case :** ลบสูตรอาหาร (Delete Recipe)\n
+
     ![Activity diagrams1](http://i.imgur.com/lpJxAJI.jpg)
-**2.Use case :** แสดงความคิดเห็น(Comment Recipe)
+**2.Use case :** แสดงความคิดเห็น(Comment Recipe)\
+
     ![Activity diagrams2](http://i.imgur.com/7xWr8Ap.jpg)
