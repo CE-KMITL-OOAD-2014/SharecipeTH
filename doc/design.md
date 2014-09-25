@@ -75,7 +75,7 @@ M2: Architectural Design, UML diagrams & Implementation Plan
     - ภายในจะเก็บข้อมูลแคลอรี่ของวัตถุดิบต่างๆ ในรูปแบบปริมาณแคลอรี่ต่อหนึ่งหน่วย
 - บันทึกรายงานข้อผิดพลาดจากผู้ใช้ (Log file)
     - เก็บข้อมูลความคิดเห็น รายงานข้อผิดพลาดจากผู้ใช้
-    - 
+
 ####![Implementation Plan](http://i.imgur.com/7u4sW4i.png)
 
 ##Domain classes##
