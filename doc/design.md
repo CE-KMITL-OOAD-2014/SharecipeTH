@@ -102,11 +102,10 @@ M2: Architectural Design, UML diagrams & Implementation Plan
 - Front-end
     - ใช้ Bootstrap เป็น Frontend Framework
     - HTML 5 เป็นโครงสร้างเบื้องต้น
-    - CSS 3 เพื่อความสวยงาม
 - Back-end
     - PHP 5.5
     - ใช้ Larave เป็น Framework ที่ใช้พัฒนา
-    - SQL Azure Database
+    - SQL Azure Database ใช้เป็นฐานข้อมูล
 
 #Implementation Plan#
 ####![Implementation Plan](http://i.imgur.com/KUsK3Ew.jpg)
