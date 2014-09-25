@@ -76,8 +76,9 @@ M2: Architectural Design, UML diagrams & Implementation Plan
 - บันทึกรายงานข้อผิดพลาดจากผู้ใช้ (Log file)
     - เก็บข้อมูลความคิดเห็น รายงานข้อผิดพลาดจากผู้ใช้
 
+###Sequence Diagram
 #####ระบบให้คะแนนสูตรอาหาร
-####![Implementation Plan](http://i.imgur.com/7u4sW4i.png)
+####![Implementation Plan](http://i.imgur.com/2CbJOkH.png)
 
 #####ระบบรายงานความผิดพลาด
 ####![Implementation Plan](http://i.imgur.com/G1eR7dH.png)
