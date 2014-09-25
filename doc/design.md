@@ -46,9 +46,16 @@ Design
 ##Domain classes##
 
 ##Deployment##
-    - ใช้ VM 1 ตัว
-    - ใช้ Laravel (PHP5) เป็น Framework ที่ใช้พัฒนา
+- ใช้ VM 1 ตัว เป็น Ubuntu server 14.04 LTS
+- ทำงานอยู่บน IP address 23.101.21.254
+- Front-end
     - ใช้ Bootstrap เป็น Frontend Framework
+    - HTML 5 เป็นโครงสร้างเบื้องต้น
+    - CSS 3 เพื่อความสวยงาม
+- Back-end
+    - PHP 5.5
+    - ใช้ Larave เป็น Framework ที่ใช้พัฒนา
+    - SQL Azure Database
 
 #Implementation Plan#
 ####![Implementation Plan](http://i.imgur.com/KUsK3Ew.jpg)
