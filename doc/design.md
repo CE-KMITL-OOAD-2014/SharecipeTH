@@ -79,6 +79,9 @@ M2: Architectural Design, UML diagrams & Implementation Plan
 #####ระบบให้คะแนนสูตรอาหาร
 ####![Implementation Plan](http://i.imgur.com/7u4sW4i.png)
 
+#####ระบบรายงานความผิดพลาด
+####![Implementation Plan](http://i.imgur.com/G1eR7dH.png)
+
 ##Domain classes##
 
 ####![Implementation Plan](http://i.imgur.com/LZcBlHY.png)
