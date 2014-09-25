@@ -78,7 +78,7 @@ M2: Architectural Design, UML diagrams & Implementation Plan
 
 ##Domain classes##
 
-####![Implementation Plan](http://i.imgur.com/wa783wL.png)
+####![Implementation Plan](http://i.imgur.com/b7YDYZh.png)
 
 ##Deployment##
 - ใช้ VM 1 ตัว เป็น Ubuntu server 14.04 LTS
