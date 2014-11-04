@@ -10,7 +10,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" rel="home" href="#">SharecipeTH</a>
+          <a class="navbar-brand" rel="home" href="http://localhost/laravel/public/user">SharecipeTH</a>
         </div>
     
         <div class="collapse navbar-collapse">
@@ -22,10 +22,16 @@
       
 <!--login -->
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="user/login">เข้าสู่ระบบ</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="user/register">สมัครสมาชิก</a></li>
+               <li class="dropdown" id="menuProfile">
+                <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navProfile">{{Auth::user()->name}}</a>
+                <div class="dropdown-menu" style="padding:17px;">
+                  <form id="formlogin" class="form in collapse" style="height: auto;">
+                   <li><a href="{{ route('profile') }}">profile</a></li>
+                   <hr>
+                   <li><a href="{{ route('logout') }}">ออกจากระบบ</a></li>
+                  </form>
+                </div>
+              </li>
             </ul>
   <!--search-->
             <form class="navbar-form navbar-right" role="search">

@@ -22,10 +22,8 @@
       
 <!--login -->
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="user/login">เข้าสู่ระบบ</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="user/register">สมัครสมาชิก</a></li>
+              <li><a href="login">เข้าสู่ระบบ</a></li>
+              
             </ul>
   <!--search-->
             <form class="navbar-form navbar-right" role="search">

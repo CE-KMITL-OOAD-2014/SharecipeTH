@@ -24,27 +24,39 @@ Route::get("user",[
     "uses" => "UsersController@mainAction"
 ]);
   
-Route::get("user/login",[
-    "as" => "users/index",
-    "uses" => "UsersController@indexAction"
-]);
- 
-Route::post('user/login', [
-    "as" => "users/login",
-    "uses" => "UsersController@loginAction"
-]);
- 
-Route::get('user/profile', [
-    "as" => "users/profile",
-    "uses" => "UsersController@profileAction"
-]);
 
-Route::get('user/register', [
-    "as" => "users/register",
-    "uses" => "UsersController@registershowAction"
-]);
- 
-Route::post('user/register', [
-    "as" => "users/register",
-    "uses" => "UsersController@registerAction"
-]);
+Route::group(array('prefix' => 'user'), function()
+{
+
+    Route::get("/login",[
+        "as" => "users/index",
+        "uses" => "UsersController@indexAction"
+    ]);
+     
+    Route::post('/login', [
+        "as" => "users/login",
+        "uses" => "UsersController@loginAction"
+    ]);
+     
+    Route::get('/profile', [
+        "as" => "profile",
+        "uses" => "UsersController@profileAction"
+    ]);
+
+    Route::get('/register', [
+        "as" => "register",
+        "uses" => "UsersController@registershowAction"
+    ]);
+     
+    Route::post('/register', [
+        "as" => "users/register",
+        "uses" => "UsersController@registerAction"
+    ]);
+
+    Route::get('/logout', [
+        "as" => "logout",
+        "uses" => "UsersController@logoutAction"
+    ]);
+});
+
+
