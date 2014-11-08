@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="language" content="en" />
          
-        <title> Tutorial Laravel 4 Framework </title>
+        <title> SharecipeTH </title>
         <meta name="keywords" content="your, awesome, keywords, here" />
         <meta name="author" content="Jon Doe" />
         <meta name="viewport" content="width=device-width, initial-scale=1">

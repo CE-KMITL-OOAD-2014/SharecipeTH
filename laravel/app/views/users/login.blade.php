@@ -4,7 +4,7 @@
 <div class="col-lg-12">
   <h1>เข้าสู่ระบบ</h1>
   <hr>
-    {{ Form::open(array('url'=>'user/login','class'=>'form-signin')) }}
+    {{ Form::open(array('url'=>'user/login','class'=>'form-signin','method' => 'post')) }}
       @if($errors->all())
       <div class='alert alert-danger'>
           <h3>แจ้งเตือน</h3>

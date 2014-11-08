@@ -1,4 +1,4 @@
-@extends("layouts.mainUser")
+@extends("layouts.masterProfile")
 @section("content")
 <div class="container">
     <div class="row">

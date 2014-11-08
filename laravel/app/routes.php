@@ -19,14 +19,12 @@
 Route::get('/','SiteController@indexAction');
 //[skeleton]/app/controllers/SiteController.php
 
-Route::get("user",[
-    "as" => "users/main",
-    "uses" => "UsersController@mainAction"
-]);
-  
-
 Route::group(array('prefix' => 'user'), function()
 {
+    Route::get("/main",[
+        "as" => "users/main",
+        "uses" => "UsersController@mainAction"
+    ]);
 
     Route::get("/login",[
         "as" => "users/index",

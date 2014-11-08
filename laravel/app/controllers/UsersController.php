@@ -7,12 +7,14 @@ class UsersController extends BaseController {
         return View::make('users/main');
     }
     public function indexAction() {
-        $user = Session::get('user');
-        if (empty($user)) {
-           return View::make('users/login');
+
+        if (Auth::check())
+        {
+            return Redirect::to('user/profile'); 
         } else {
-           return View::make('users/profile')->with('resuft',$user);
+            return View::make('users/login');
         }
+
     }
     public function registershowAction() {
         $user = Session::get('user');

@@ -15,6 +15,12 @@
                 @endif
                 <div class="row">
                   <div class="form-group col-lg-4">
+                    <label for="inputUsername">ชื่อ</label>
+                    <input type="text" class="form-control" name="name" placeholder="name">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-lg-4">
                     <label for="inputEmail">อีเมล</label>
                     <input type="email" class="form-control" name="mail" placeholder="Enter email">
                   </div>
@@ -37,12 +43,7 @@
                     <input type="password" class="form-control" name="password_again" placeholder="Password(again)">
                   </div>
                 </div>
-                <div class="row">
-                  <div class="form-group col-lg-4">
-                    <label for="inputUsername">ชื่อ</label>
-                    <input type="text" class="form-control" name="name" placeholder="name">
-                  </div>
-                </div>
+                
                 <div class="form-actions">
                 <!-- <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up </button> -->
                   <input type="submit" value="ลงทะเบียน" class="btn btn-primary">
