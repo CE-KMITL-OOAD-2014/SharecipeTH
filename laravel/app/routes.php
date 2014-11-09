@@ -57,4 +57,7 @@ Route::group(array('prefix' => 'user'), function()
     ]);
 });
 
-
+Route::get("recipe/create",[
+        "as" => "create",
+        "uses" => "RecipeController@mainAction"
+    ]);
