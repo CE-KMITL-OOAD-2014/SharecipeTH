@@ -29,7 +29,7 @@
               <form class="form">
                 <h4>สร้างเมนูอาหาร</h4>
                 <div class="row">
-                  <div class="col-xs-4 pull-right" ><a class="btn btn-success center-block" href="recipe/create">สร้าง</a></div>
+                  <div class="col-xs-4 pull-right" ><a class="btn btn-success center-block" href="http://localhost/laravel/public/recipe/create">สร้าง</a></div>
                 </div>
               </form>
             </div>

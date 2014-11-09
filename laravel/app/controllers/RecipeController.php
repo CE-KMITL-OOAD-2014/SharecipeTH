@@ -2,13 +2,12 @@
 class RecipeController extends BaseController {
     protected $layout = 'layouts.masterProfile'; // กำหนด Layouts ที่ใช้งานเป็น main.blade.php
 
-    public function recipeShowAction() {
-        $user = Session::get('user');
-        if (empty($user)) 
+    public function createShowAction() {
+        if (Auth::check())
         {
-            return View::make('users/register');
+            return View::make('recipes/create');
         } else {
-            return View::make('users/profile')->with('resuft',$user);
+            return View::make('users/login');
         }
     }
 

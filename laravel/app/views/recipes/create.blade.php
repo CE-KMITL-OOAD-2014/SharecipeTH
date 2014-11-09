@@ -12,10 +12,19 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="form-group col-lg-4">
+                  <div class="col-lg-4">
                     <label for="inputTime">เวลาในการทำ</label>
-                    <input type="email" class="form-control" name="mail" placeholder="time">
-                  </div>
+                    <input type="text" class="form-control" name="name" placeholder="time">
+                  </div><!-- /.col-lg-4 -->
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    <label for="br"></label>
+                    <select class="form-control" id="sel1">
+                      <option>นาที</option>
+                      <option>ชั่วโมง</option>
+                    </select>
+                  </div><!-- /.col-lg-4 -->
                 </div>
                 <div class="row">
                   <div class="form-group col-lg-4">
@@ -26,19 +35,16 @@
                 <div class="row">
                   <div class="form-group col-lg-4">
                     <label for="inputPrepare">ขั้นตอนการทำ</label>
-                    <input type="text" class="form-control" name="username" placeholder="Preparation">
+                    <textarea class="form-control" rows="4" name="prepare"></textarea>
                   </div>
                 </div>
                 
                 <div class="form-actions">
                 <!-- <button id="btn-signup" type="submit" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up </button> -->
-                  <input type="submit" value="ลงทะเบียน" class="btn btn-primary">
+                  <input type="submit" value="สร้างเมนู" class="btn btn-primary">
                 </div>
             {{ Form::close() }}
         </div>
     </div><hr />
    
 @stop
-
-
-
