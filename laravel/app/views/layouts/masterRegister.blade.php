@@ -26,8 +26,8 @@
         <script type="text/javascript" src="../../public/assets/bootstrap/dist/js/bootstrap.min.js"></script>
          <style type="text/css">
             body {
-  padding-top: 50px;
-}
+                padding-top: 50px;
+            }
         </style>
     </head>
     <body>

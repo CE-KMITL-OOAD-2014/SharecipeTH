@@ -10,19 +10,18 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" rel="home" href="#">SharecipeTH</a>
+          <a class="navbar-brand" rel="home" href="/laravel/public">SharecipeTH</a>
         </div>
     
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#home">หน้าหลัก</a></li>
               <li><a href="#popular">เมนูยอดนิยม</a></li>
-              <li><a href="#contactus">ติดต่อเรา</a></li>
+              <li><a href="{{ route('report') }}">ติดต่อเรา</a></li>
             </ul>
       
 <!--login -->
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="login">เข้าสู่ระบบ</a></li>
+              <li><a href="{{ route('login') }}">เข้าสู่ระบบ</a></li>
               
             </ul>
   <!--search-->

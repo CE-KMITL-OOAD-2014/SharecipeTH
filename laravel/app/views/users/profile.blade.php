@@ -2,10 +2,27 @@
 @section("content")
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <h1>ยินดีต้อนรับ {{Auth::user()->name}}</h1>
-      {{Auth::user()->email}}
-    </div>
+
+      
+    <div class="col-lg-6">
+      @if(Session::has('success'))
+        <div class='alert alert-info'>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <div class="alert-box success">
+            <h2>{{ Session::get('success') }}</h2>
+          </div>
+        </div>
+      @endif
+      @if(Session::has('login'))
+        <div class='alert alert-info'>
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+          <div class="alert-box login">
+            <h2>{{ Session::get('login') }}</h2>
+            ยินดีต้อนรับ {{Auth::user()->name}}
+          </div>
+        </div>
+      @endif
+    </div>    
   </div>
   <div class="row">
     <div class="col-lg-12">
@@ -13,7 +30,7 @@
         <div class="row">
           <div class="col-md-12 col-sm-12">
             <div class="panel panel-default">
-              <div class="panel-heading"><a href="#" class="pull-right" > 
+              <div class="panel-heading"><a href="{{ route('editProfile') }}" class="pull-right" > 
                 <span class="glyphicon glyphicon-wrench"></span> Edit </a> <h4>Profile</h4>
               </div>
               <div class="panel-body">
@@ -29,7 +46,7 @@
               <form class="form">
                 <h4>สร้างเมนูอาหาร</h4>
                 <div class="row">
-                  <div class="col-xs-4 pull-right" ><a class="btn btn-success center-block" href="http://localhost/laravel/public/recipe/create">สร้าง</a></div>
+                  <div class="col-xs-4 pull-right" ><a class="btn btn-success center-block" href="{{ route('create') }}">สร้าง</a></div>
                 </div>
               </form>
             </div>

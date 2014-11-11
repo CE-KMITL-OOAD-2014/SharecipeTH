@@ -29,10 +29,11 @@
                 padding-top: 50px;
             }
         </style>
+
     </head>
     <body>
         <!-- นำเข้าไฟล์ header.blade.php -->
-        @include("layouts.headerLogin")
+        @include("layouts.headerProfile")
          <div class="container">
             @yield("content")
 
@@ -41,4 +42,20 @@
         <!-- นำเข้าไฟล์ footer.blade.php -->
         @include("layouts.footer")
     </body>
+        
+        <script type="text/javascript">
+        $('.selectpicker').selectpicker();
+            var count = '1';
+            function toggler(divId) {
+                $("#" + divId + count).toggle();
+                if(count<9)
+                count++;
+            }
+            function deToggler(divId) {
+                $("#" + divId + (count-1)).toggle();
+                if(count>1){
+                    count--;
+                }
+            }
+        </script>
 </html>

@@ -7,11 +7,12 @@
    <div class="row">
    <div class="col-md-4 col-sm-6">
         <div class="panel panel-default">
-	        <div class="panel-heading"><a href="#" class="pull-right" > 
+	        <div class="panel-heading"><a href="{{ route('editProfile') }}" class="pull-right" > 
 	          	<span class="glyphicon glyphicon-wrench"></span> Edit </a> <h4>Profile</h4>
 	        </div>
    			<div class="panel-body">
-              	<img src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=70" class="img-circle"> <a href="{{ route('profile') }}">{{Auth::user()->name}}</a>
+
+              	<img src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=70" class="img-circle"><a href="{{ route('profile') }}"> {{Auth::user()->name}}</a><p><span class="label label-info">10 recipes</span></p> 
               	<div class="clearfix"></div>
               <hr>
               <p> info </p>
@@ -25,7 +26,7 @@
              <form class="form">
               <h4>สร้างเมนูอาหาร</h4>
               <div class="row">
-                <div class="col-xs-4 pull-right" ><a class="btn btn-success center-block" href="#">สร้าง</a></div>
+                <div class="col-xs-4 pull-right" ><a class="btn btn-success center-block" href="{{ route('create') }}">สร้าง</a></div>
               </div>
             </form>
           </div>    

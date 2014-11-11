@@ -18,7 +18,7 @@ class CreateCaloriesTable extends Migration {
 			$table->string('name',50);
 			$table->integer('quantity')->unsigned();
 			$table->string('unit');
-			$table->integer('calorie')->unsigned();
+			$table->float('calorie')->unsigned();
 			$table->timestamps();
 		});
 	}

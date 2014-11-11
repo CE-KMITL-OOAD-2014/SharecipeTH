@@ -14,14 +14,14 @@ class RecipeController extends BaseController {
     public function createAction(){
         $validator = Validator::make(Input::all(),
         array(
-        'email' => 'required|email',
-        'password' => 'required|min:5',
-        'password_again' => 'required|same:password'
+        'name' => 'required',
+        'time' => 'required|digits',
+        'method' => 'required',
         )
         );
 
         if($validator->fails()){
-            return Redirect::to('user/register')->withErrors($validator)->withInput(Input::except('password'));
+            return Redirect::to('user/register')->withErrors($validator);
         }else{
             $email = Input::get('email');
             $username = Input::get('username');

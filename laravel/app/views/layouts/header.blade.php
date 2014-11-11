@@ -15,17 +15,16 @@
     
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-              <li><a href="#home">หน้าหลัก</a></li>
               <li><a href="#popular">เมนูยอดนิยม</a></li>
-              <li><a href="#contactus">ติดต่อเรา</a></li>
+              <li><a href="{{ route('report') }}">ติดต่อเรา</a></li>
             </ul>
       
 <!--login -->
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="user/login">เข้าสู่ระบบ</a></li>
+              <li><a href="{{ route('login') }}">เข้าสู่ระบบ</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="user/register">สมัครสมาชิก</a></li>
+              <li><a href="{{ route('register') }}">สมัครสมาชิก</a></li>
             </ul>
   <!--search-->
             <form class="navbar-form navbar-right" role="search">
