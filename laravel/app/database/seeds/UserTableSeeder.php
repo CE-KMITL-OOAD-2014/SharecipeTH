@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
 			));
 		User::create(array(
 			'name'		=>	'วรเดช',
-			'username' 	=>	'woradej',
+			'username' 	=>	'guide',
 			'email'		=>	'guide@sharecipeth.com',
 			'password'	=>	Hash::make('12345')
 			));

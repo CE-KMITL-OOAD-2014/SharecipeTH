@@ -19,42 +19,59 @@
 Route::get('/',["uses" => 'SiteController@indexAction']);
 //[skeleton]/app/controllers/SiteController.php
 
+Route::get("/login",[
+    "as" => "login",
+    "uses" => "UsersController@indexAction"
+]);
+Route::post('/login', [
+    "as" => "login",
+    "uses" => "UsersController@loginAction"
+]);
+Route::get('/register', [
+    "as" => "register",
+    "uses" => "UsersController@registershowAction"
+]); 
+Route::post('/register', [
+    "as" => "register",
+    "uses" => "UsersController@registerAction"
+]);
+
 Route::group(array('prefix' => 'user'), function()
 {
     Route::get("/main",[
         "as" => "user/main",
         "uses" => "UsersController@mainAction"
     ]);
-    Route::get("/login",[
-        "as" => "login",
-        "uses" => "UsersController@indexAction"
-    ]);
-    Route::post('/login', [
-        "as" => "login",
-        "uses" => "UsersController@loginAction"
-    ]);
     Route::get('/profile', [
         "as" => "profile",
         "uses" => "UsersController@profileAction"
-    ]);
-    Route::get('/register', [
-        "as" => "register",
-        "uses" => "UsersController@registershowAction"
-    ]); 
-    Route::post('/register', [
-        "as" => "register",
-        "uses" => "UsersController@registerAction"
     ]);
     Route::get('/logout', [
         "as" => "logout",
         "uses" => "UsersController@logoutAction"
     ]);
     Route::get('/edit', [
+        "as" => "showEditProfile",
+        "uses" => "UsersController@editShowAction"
+    ]);
+    Route::post('/edit', [
         "as" => "editProfile",
         "uses" => "UsersController@editAction"
     ]);
+    Route::get('/remove', [
+        "as" => "remove-user",
+        "uses" => "UsersController@removeShowAction"
+    ]);
+    Route::post('/remove', [
+        "as" => "remove-user",
+        "uses" => "UsersController@removeAction"
+    ]);
 });
-
+// link for visitor to open another profile
+Route::get('profile/{username}', [
+    "as" => "profile-user",
+    "uses" => "UsersController@user"
+]);
 Route::get('report', [
     "as" => "report",
     "uses" => "ReportController@reportShowAction"
@@ -63,7 +80,25 @@ Route::post('report', [
     "as" => "report",
     "uses" => "ReportController@reportAction"
 ]);
-Route::get("recipe/create",[
+
+
+
+Route::group(array('prefix' => 'recipe'), function()
+{
+    Route::get("/create",[
     "as" => "create",
     "uses" => "RecipeController@createShowAction"
-]);
+    ]);
+    Route::post("/create",[
+        "as" => "create",
+        "uses" => "RecipeController@createAction"
+    ]);
+    Route::get("/edit",[
+    "as" => "edit-recipe",
+    "uses" => "RecipeController@createShowAction"
+    ]);
+    Route::post("/edit",[
+        "as" => "edit-recipe",
+        "uses" => "RecipeController@createAction"
+    ]);
+});

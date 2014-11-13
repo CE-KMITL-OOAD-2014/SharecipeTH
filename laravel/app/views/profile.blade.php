@@ -1,27 +1,6 @@
 @extends("layouts.masterProfile")
 @section("content")
 <div class="container">
-  <div class="row">
-    <div class="col-lg-6">
-      @if(Session::has('success'))
-        <div class='alert alert-info'>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-          <div class="alert-box success">
-            <h2>{{ Session::get('success') }}</h2>
-          </div>
-        </div>
-      @endif
-      @if(Session::has('login'))
-        <div class='alert alert-info'>
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-          <div class="alert-box login">
-            <h2>{{ Session::get('login') }}</h2>
-            ยินดีต้อนรับ {{Auth::user()->name}} 
-          </div>
-        </div>
-      @endif
-    </div>    
-  </div>
   <div class="modal fade" id="picture">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -30,7 +9,7 @@
           <h4 class="modal-title">Profile Picture</h4>
         </div>
         <div class="modal-body">
-          <p><img class="img-responsive" src = {{"../../app/storage/pic/user/".Auth::user()->profilePicture}} ></p>
+          <p><img class="img-responsive" src = {{"../../app/storage/pic/user/".$user->profilePicture}} ></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -42,30 +21,20 @@
     <div class="col-lg-12">
       <div class="container" id="main">
         <div class="row">
-          <div class="col-md-10 col-sm-10">
+          <div class="col-md-12 col-sm-12">
             <div class="panel panel-default">
-              <div class="panel-heading"><a href="{{ route('editProfile') }}" class="pull-right" > 
-                <span class="glyphicon glyphicon-wrench"></span> Edit </a> <h4>Profile</h4>
+              <div class="panel-heading">
+               <h4>Profile</h4>
               </div>
               <div class="panel-body">
-                <a data-toggle="modal" data-target="#picture" ><img class="img-circle "  width="150" src = {{"../../app/storage/pic/user/".Auth::user()->profilePicture}} ></a> <a href="{{ route('profile') }}">{{Auth::user()->name}}</a> <span class="label label-info">10 recipes</span>
+                <a data-toggle="modal" data-target="#picture" ><img class="img-circle "  width="150" src = {{"../../app/storage/pic/user/".$user->profilePicture}} ></a> <a href="{{ route('profile') }}">{{$user->name}}</a> <span class="label label-info">10 recipes</span>
                 <div class="clearfix"></div>
                 <hr>
-                <p> {{Auth::user()->info}} </p>
+                <p> {{$user->info}} </p>
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-sm-6">
-            <div class="well"> 
-              <form class="form">
-                <h4>สร้างเมนูอาหาร</h4>
-                <div class="row">
-                  <div class="col-xs-4 pull-right" ><a class="btn btn-success center-block" href="{{ route('create') }}">สร้าง</a></div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div><!--/row-->
+          
         <hr>
         <div class="row">
          <div class="col-md-12"><h2>Posts</h2></div>

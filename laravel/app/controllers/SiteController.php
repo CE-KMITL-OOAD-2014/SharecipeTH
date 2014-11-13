@@ -1,4 +1,5 @@
 <?php
+
 class SiteController extends BaseController {
 	public function indexAction(){
 		if (Auth::check())

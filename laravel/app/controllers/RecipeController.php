@@ -1,4 +1,5 @@
 <?php
+
 class RecipeController extends BaseController {
     protected $layout = 'layouts.masterProfile'; // กำหนด Layouts ที่ใช้งานเป็น main.blade.php
 
@@ -12,30 +13,50 @@ class RecipeController extends BaseController {
     }
 
     public function createAction(){
+        return var_dump(Input::get());
         $validator = Validator::make(Input::all(),
         array(
         'name' => 'required',
-        'time' => 'required|digits',
+        'timeH' => 'required|numeric|min:0|max:24',
+        'timeM' => 'required|numeric|min:0|max:59',
         'method' => 'required',
+        'prepare' => 'required',
         )
         );
 
         if($validator->fails()){
-            return Redirect::to('user/register')->withErrors($validator);
+            return Redirect::to('recipe/create')->withErrors($validator);
         }else{
-            $email = Input::get('email');
-            $username = Input::get('username');
-            $password = Input::get('password');
-            $name = Input::get('name');
-            $user = User::create(array(
-                'username' => $username,
-                'password' => Hash::make($password),
-                'email' => $email,
-                'name' => $name
-            )
-            );
-
-        return View::make('users/login');
+            
+        return View::make('users/profile');
         }	
+    }
+
+    public function editShowAction() {
+        if (Auth::check())
+        {
+            return View::make('recipes/edit');
+        } else {
+            return View::make('users/login');
+        }
+    }
+
+    public function editAction(){
+        $validator = Validator::make(Input::all(),
+        array(
+        'name' => 'required',
+        'timeH' => 'required|numeric|min:0|max:24',
+        'timeM' => 'required|numeric|min:0|max:59',
+        'method' => 'required',
+        'prepare' => 'required',
+        )
+        );
+
+        if($validator->fails()){
+            return Redirect::to('recipe/create')->withErrors($validator);
+        }else{
+            
+        return View::make('users/profile');
+        }   
     }
 }

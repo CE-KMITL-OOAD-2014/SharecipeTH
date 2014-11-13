@@ -12,10 +12,8 @@
 	        </div>
    			<div class="panel-body">
 
-              	<img src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=70" class="img-circle"><a href="{{ route('profile') }}"> {{Auth::user()->name}}</a><p><span class="label label-info">10 recipes</span></p> 
+              	<img class="img-circle" width="60" src = {{"../../app/storage/pic/user/".Auth::user()->profilePicture}} > <a href="{{ route('profile') }}">{{Auth::user()->name}}</a><p><span class="label label-info">10 recipes</span></p> 
               	<div class="clearfix"></div>
-              <hr>
-              <p> info </p>
             </div>
    		</div>
 

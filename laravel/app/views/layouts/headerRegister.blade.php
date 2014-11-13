@@ -1,4 +1,5 @@
 @section("header")
+<!-- headerRegister -->
 <div class="container">
   <div class="header">
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">

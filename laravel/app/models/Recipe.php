@@ -1,6 +1,6 @@
 <?php
 
-class Recipe extends eloquent {
+class Recipe extends Eloquent {
 
 	public $timestamps = false;
 

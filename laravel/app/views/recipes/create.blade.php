@@ -5,40 +5,30 @@
             <h1>สร้างเมนูอาหาร</h1>
             <hr>
               {{ Form::open(array('url'=>'recipe/create','method' => 'post')) }}
+                @if($errors->all())
+                  <div class='alert alert-danger'>
+                    <h3>แจ้งเตือน</h3>
+                    @foreach($errors->all() as $error)
+                    {{ $error }}
+                    @endforeach
+                  </div>
+                @endif
                 <div class="row">
                   <div class="form-group col-lg-4">
                     <label for="inputMenuName">ชื่อเมนู</label>
-                    <input type="text" class="form-control" name="menu" placeholder="Menu name">
+                    <input type="text" class="form-control" name="name" placeholder="Menu name">
                   </div>
                 </div>
                 <div class="row">
-                  <div class="form-group col-lg-4">
-                    <label for="inputTime">เวลาในการทำ</label>
-                    <input type="text" class="form-control" name="time" placeholder="Time">
+                  <div class="form-group col-lg-2">
+                    <label for="inputHour">เวลาในการทำ (ชั่วโมง)</label>
+                    <!-- <input type="text" class="form-control" name="timeH" placeholder="ชั่วโมง"> -->
+                    <input type="text" class="span2" name="timeH" data-slider-min="0" data-slider-max="24" value="0" id="sl1">
                   </div><!-- /.col-lg-4 -->
                   <div class="form-group col-lg-2">
-                    <label for="inputTime">หน่วยเวลา</label>
-                    <select class="form-control" id="sel1" name="tUnit">
-                      <option>นาที</option>
-                      <option>ชั่วโมง</option>
-                    </select>
-                  </div><!-- /.col-lg-4 -->
-                  <div class="form-group col-lg-2">
-                    <label for="inputTime">นาที</label>
-                    <select class="selectpicker" data-size="5">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                    </select>
+                  <label for="inputMintue"> นาที </label>
+                    <!-- <input type="text" class="form-control" name="timeM" placeholder="นาที"> -->
+                    <input type="text" class="span2" name="timeM" data-slider-min="0" data-slider-max="59" value="0" id="sl2">                  
                   </div><!-- /.col-lg-4 -->
                 </div>
                 <div class="row">
@@ -50,14 +40,17 @@
                 <div class="row">
                   <div class="form-group col-lg-6">
                     <label for="inputPrepare">ขั้นตอนการทำ</label>
-                    <textarea class="form-control" rows="5" name="Prepare"></textarea>
+                    <textarea class="form-control" rows="5" id="area1" name="prepare"></textarea>
                   </div>
                 </div>
                 <div class="row">
+                  <div id="ingredient">
+                    
+                  </div>
                   <div class="col-lg-12">
                     <div class="form-group col-lg-4">
                       <label for="inputPrepare">ส่วนผสม</label>
-                      <input type="text" class="form-control" name="ingredient" placeholder="Ingredient">
+                      <input type="text" class="form-control" name="ingredient" placeholder="Ingredient Name">
                     </div>
                     <div class="form-group col-lg-2">
                       <label for="inputPrepare">จำนวน</label>
@@ -180,6 +173,76 @@
                       <br>
                     </div>
                   </div>
+                  <div class="col-lg-12">
+                    <div id="ingredient8" style="display: none">
+                      <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div id="ingredient8" style="display: none">
+                      <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div id="ingredient8" style="display: none">
+                      <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div id="ingredient8" style="display: none">
+                      <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
+                      </div>
+                      <br>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div id="ingredient8" style="display: none">
+                      <div class="form-group col-lg-4">
+                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
+                      </div>
+                      <div class="form-group col-lg-2">
+                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
+                      </div>
+                      <br>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-actions">
                   <input type="submit" value="สร้างเมนู" class="btn btn-primary">
@@ -192,6 +255,29 @@
           <button type="button" class="btn btn-danger" onclick="deToggler('ingredient');">ลบส่วนผสม</button>
         </div>
     </div><hr />
+   
+    <script type="text/javascript">
+
+    $('#sl1').slider({
+          formater: function(value) {
+            return value+' ชม.';
+          }
+        });
+    $('#sl1').slider('setValue', 0);
+
+    $('#sl2').slider({
+          formater: function(value) {
+            return value+' นาที';
+          }
+        });
+    $('#sl2').slider('setValue', 0);
+    </script>
+    <script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      bkLib.onDomLoaded(function() {new nicEditor(
+        {buttonList : ['bold','italic','underline','strikeThrough','html','image']}).panelInstance('area1');}
+      );
+    </script>
    
 @stop
 
