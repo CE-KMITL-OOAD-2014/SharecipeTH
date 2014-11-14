@@ -13,23 +13,69 @@ class RecipeController extends BaseController {
     }
 
     public function createAction(){
-        return var_dump(Input::get());
         $validator = Validator::make(Input::all(),
-        array(
-        'name' => 'required',
-        'timeH' => 'required|numeric|min:0|max:24',
-        'timeM' => 'required|numeric|min:0|max:59',
-        'method' => 'required',
-        'prepare' => 'required',
-        )
+            array(
+            'name'    => 'required|unique:recipes',
+            'timeH'   => 'required|numeric|min:0|max:24',
+            'timeM'   => 'required|numeric|min:0|max:59',
+            'method'  => 'required',
+            'prepare' => 'required',
+            'ingredient' => 'required'
+            )
         );
 
         if($validator->fails()){
             return Redirect::to('recipe/create')->withErrors($validator);
         }else{
-            
-        return View::make('users/profile');
-        }	
+            $user = User::find(Auth::user()->id);
+            if(Input::hasfile('recipePicture')){
+                $file = Input::file('recipePicture');
+                $path = storage_path('pic/recipe/'); 
+                $ext = $file->guessExtension();
+                $newFilename = time()."_".str_random(20).".".$ext;
+                $upload = $file->move($path,$newFilename);       
+                $picture = $newFilename;
+
+            }
+            else {
+                $picture = 'empty-dish.jpg';
+            }
+            $name    = Input::get('name');
+            $hour    = Input::get('timeH');
+            $minute  = Input::get('timeM');
+            $method  = Input::get('method');
+            $prepare = Input::get('prepare');
+            //array
+            $ingredients = Input::get('ingredient');
+            $quantity    = Input::get('quantity');
+            $unit        = Input::get('unit');
+
+            $recipe = Recipe::create(array(
+                'user_id'        => $user->id,
+                'name'           => $name,
+                'time_hour'      => $hour,
+                'time_minute'    => $minute,
+                'method'         => $method,
+                'prepare'        => $prepare,
+                'recipe_picture' => $picture
+                )
+            );
+            $count = 0;
+            foreach ($ingredients as $ingre) {
+
+                $ingredient = Ingredient::create(array(
+                    'name' => $ingre,
+                    'quantity' => $quantity[$count],
+                    'unit' => $unit[$count],
+                    'recipe_id' => $recipe->id
+                    )
+                );
+
+                $count++;
+
+            }        
+        return Redirect::to('user/profile');
+        }
     }
 
     public function editShowAction() {
@@ -43,13 +89,13 @@ class RecipeController extends BaseController {
 
     public function editAction(){
         $validator = Validator::make(Input::all(),
-        array(
-        'name' => 'required',
-        'timeH' => 'required|numeric|min:0|max:24',
-        'timeM' => 'required|numeric|min:0|max:59',
-        'method' => 'required',
-        'prepare' => 'required',
-        )
+            array(
+            'name' => 'required',
+            'timeH' => 'required|numeric|min:0|max:24',
+            'timeM' => 'required|numeric|min:0|max:59',
+            'method' => 'required',
+            'prepare' => 'required',
+            )
         );
 
         if($validator->fails()){
@@ -58,5 +104,15 @@ class RecipeController extends BaseController {
             
         return View::make('users/profile');
         }   
+    }
+
+    public function showRecipeAction($id)
+    {   $recipe = Recipe::where('id','=',$id);
+        if ($recipe->count()) {
+            $recipe = $recipe->first();
+            return View::make('recipes/recipe')->with('recipe',$recipe);
+        }else{
+            return App::abort(404);
+        }
     }
 }

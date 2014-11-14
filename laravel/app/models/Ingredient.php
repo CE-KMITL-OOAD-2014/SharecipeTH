@@ -1,5 +1,14 @@
 <?php
-class Ingredient {
+
+class Ingredient extends Eloquent {
+
+	public $timestamps = false;
+
+	protected $table = 'ingredients';
+
+	protected $fillable = array('name','quantity', 'unit', 'recipe_id');
+}
+/*class Ingredient {
 	private $name;
 	private $quantity;
 	private $unit;
@@ -42,4 +51,4 @@ class Ingredient {
 	{
 		return $this->unit;
 	}
-}
+}*/

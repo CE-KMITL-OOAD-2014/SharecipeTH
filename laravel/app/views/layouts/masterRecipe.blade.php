@@ -46,51 +46,48 @@
     </body>
         
         <script type="text/javascript">
-            var count = '1';
-            function toggler(divId) {
+            var count = 1;
+            
+            function toggler() {
                 /*$("#" + divId + count).toggle();
-                if(count<9)*/
-                count++;
-            var div = document.createElement('div');
-            var div1 = document.createElement('div');
-            var div2 = document.createElement('div');
-            var div3 = document.createElement('div');
-            var div4 = document.createElement('div');
-            div.className = 'col-lg-12';
-            div2.className = 'form-group col-lg-4';
-            div3.className = 'form-group col-lg-2';
-            div4.className = 'form-group col-lg-2';
-            div.id = 'div0';
-            div1.id = 'div1';
-            div2.innerHTML =    '<input type="text" class="form-control" name="ingredient"'+count' placeholder="Ingredient"/>';
-            div3.innerHTML =    '<input type="text" class="form-control" name="quantity"+$count placeholder="Quantity"/>';
-            div4.innerHTML =    '<input type="text" class="form-control" name="unit"+$count placeholder="Unit"/>\
-                                <br/>';
-            document.getElementById('ingredient').appendChild(div);
-            document.getElementById('div0').appendChild(div1);
-            document.getElementById('div1').appendChild(div2);
-            document.getElementById('div1').appendChild(div3);
-            document.getElementById('div1').appendChild(div4);
-            
-                   /*
-                   <div id="ingredient1" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient1" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity1" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit1" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>*/
-            
+                if(count<9)
+                count++;*/
+                if(count < 20){
+                    var show = count ;
+                    var div = document.createElement('div');
+                    var div1 = document.createElement('div');
+                    var div2 = document.createElement('div');
+                    var div3 = document.createElement('div');
+                    var div4 = document.createElement('div');
+                    div.className = 'col-lg-12';
+                    div2.className = 'form-group col-lg-4';
+                    div3.className = 'form-group col-lg-2';
+                    div4.className = 'form-group col-lg-2';
+                    div.id = 'ingre'+count;
+                    div1.id = 'div1-'+count;
+                    div2.id = 'div2';
+                    div3.id = 'div3';
+                    div4.id = 'div4';
+                    div2.innerHTML =    '<input type="text" class="form-control" name="ingredient[]" placeholder="ชื่อส่วนผสมที่ '+show+'"/>';
+                    div3.innerHTML =    '<input type="text" class="form-control" name="quantity[]" placeholder="ปริมาณ"/>';
+                    div4.innerHTML =    '<input type="text" class="form-control" name="unit[]" placeholder="หน่วย"/>';
+                    document.getElementById('ingredient').appendChild(div);
+                    document.getElementById('ingre'+count).appendChild(div1);
+                    document.getElementById('div1-'+count).appendChild(div2);
+                    document.getElementById('div1-'+count).appendChild(div3);
+                    document.getElementById('div1-'+count).appendChild(div4);
+                    count++;
+                }
             }
             function deToggler(divId) {
-                $("#" + divId + (count-1)).toggle();
                 if(count>1){
                     count--;
+                
+                var d = document.getElementById('ingredient');
+
+                var olddiv = document.getElementById('ingre'+count);
+
+                d.removeChild(olddiv);
                 }
             }
            

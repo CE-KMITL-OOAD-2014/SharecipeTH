@@ -4,7 +4,7 @@
         <div class="col-lg-12">
             <h1>สร้างเมนูอาหาร</h1>
             <hr>
-              {{ Form::open(array('url'=>'recipe/create','method' => 'post')) }}
+              {{ Form::open(array('url'=>'recipe/create','method' => 'post', 'files' => true)) }}
                 @if($errors->all())
                   <div class='alert alert-danger'>
                     <h3>แจ้งเตือน</h3>
@@ -13,6 +13,12 @@
                     @endforeach
                   </div>
                 @endif
+                <div class="row">
+                  <div class="form-group col-lg-4">
+                    <label for="recipePicture">รูปภาพอาหาร</label>
+                    {{Form::file('recipePicture')}}
+                  </div>
+                </div>
                 <div class="row">
                   <div class="form-group col-lg-4">
                     <label for="inputMenuName">ชื่อเมนู</label>
@@ -44,216 +50,35 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div id="ingredient">
-                    
-                  </div>
                   <div class="col-lg-12">
                     <div class="form-group col-lg-4">
-                      <label for="inputPrepare">ส่วนผสม</label>
-                      <input type="text" class="form-control" name="ingredient" placeholder="Ingredient Name">
+                      <label for="inputIngredient">ส่วนผสม</label>
+                      <input type="text" class="form-control" style="display: none" name="ingredient-location" placeholder="ชื่อส่วนผสม">
                     </div>
                     <div class="form-group col-lg-2">
-                      <label for="inputPrepare">จำนวน</label>
-                      <input type="text" class="form-control" name="quantity" placeholder="Quantity">
+                      <label for="inputQuantity">ปริมาณ</label>
+                      <input type="text" class="form-control" style="display: none" name="quantity-location" placeholder="ปริมาณ">
                     </div>
                     <div class="form-group col-lg-2">
-                      <label for="inputPrepare">หน่วย</label>
-                      <input type="text" class="form-control" name="unit" placeholder="Unit">
+                      <label for="inputUnit">หน่วย</label>
+                      <input type="text" class="form-control" style="display: none" name="unit-location" placeholder="หน่วย">
                     </div>
                   </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient1" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient1" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity1" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit1" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient2" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient2" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity2" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit2" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient3" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient3" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity3" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit3" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient4" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient4" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity4" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit4" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient5" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient5" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity5" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit5" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient6" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient6" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity6" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit6" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient7" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient17" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity7" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit7" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient8" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient8" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient8" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient8" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient8" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <div id="ingredient8" style="display: none">
-                      <div class="form-group col-lg-4">
-                        <input type="text" class="form-control" name="ingredient8" placeholder="Ingredient">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="quantity8" placeholder="Quantity">
-                      </div>
-                      <div class="form-group col-lg-2">
-                        <input type="text" class="form-control" name="unit8" placeholder="Unit">
-                      </div>
-                      <br>
-                    </div>
-                  </div>
+                  <div id="ingredient"> <!-- add more ingredient --> </div> 
+
+                </div>
+                <div class="col-lg-4">
+                  <button type="button" class="btn btn-primary" onclick="toggler('ingredient');">เพิ่มส่วนผสม</button>
+                  <button type="button" class="btn btn-danger" onclick="deToggler('ingredient');">ลบส่วนผสม</button>
                 </div>
                 <div class="form-actions">
                   <input type="submit" value="สร้างเมนู" class="btn btn-primary">
                 </div>
+                
             {{ Form::close() }}
             <br>
         </div>
-        <div class="col-lg-4">
-          <button type="button" class="btn btn-primary" onclick="toggler('ingredient');">เพิ่มส่วนผสม</button>
-          <button type="button" class="btn btn-danger" onclick="deToggler('ingredient');">ลบส่วนผสม</button>
-        </div>
+        
     </div><hr />
    
     <script type="text/javascript">

@@ -62,10 +62,10 @@ class UsersController extends BaseController {
     public function registerAction(){
     	$validator = Validator::make(Input::all(),
 			array(
-                'name' => 'required',
-                'userame' => 'unique:user,username',
-				'email' => 'required|email|unique:users,email',
-				'password' => 'required|min:5',
+                'name'           => 'required',
+                'userame'        => 'unique:user,username',
+				'email'          => 'required|email|unique:users,email',
+				'password'       => 'required|min:5',
 				'password_again' => 'required|same:password'
 			)
 		);
@@ -86,10 +86,10 @@ class UsersController extends BaseController {
                 $picture = 'anonymous.jpg';
             }
 
-			$email = Input::get('email');
+			$email    = Input::get('email');
 			$username = Input::get('username');
 			$password = Input::get('password');
-			$name = Input::get('name');
+			$name     = Input::get('name');
 
 			$user = User::create(array(
 				'username'      => $username,
@@ -120,14 +120,14 @@ class UsersController extends BaseController {
     {
         $validator = Validator::make(Input::all(),
             array(
-                'email' => 'email|unique:users,email',
-                'password' => 'min:5',
+                'email'          => 'email|unique:users,email',
+                'password'       => 'min:5',
                 'password_again' => 'same:password',
                 'profilePicture' => 'image'
             ),
             array(
-                'email.unique' => 'อีเมลนี้มีอยู่แล้วกรุณากรอกใหม่',
-                'password.min' => 'รหัสผ่าน ต้องมากกว่า :min ตัวอักษร',
+                'email.unique'        => 'อีเมลนี้มีอยู่แล้วกรุณากรอกใหม่',
+                'password.min'        => 'รหัสผ่าน ต้องมากกว่า :min ตัวอักษร',
                 'password_again.same' => 'รหัสผ่านยืนยันไม่ตรงกัน'
             )
         );
@@ -181,11 +181,11 @@ class UsersController extends BaseController {
     public function removeAction() {
         $validator = Validator::make(Input::all(),
             array(
-                'password' => 'min:5',
+                'password'       => 'min:5',
                 'password_again' => 'same:password',
             ),
             array(
-                'password.min' => 'รหัสผ่าน ต้องมากกว่า :min ตัวอักษร',
+                'password.min'        => 'รหัสผ่าน ต้องมากกว่า :min ตัวอักษร',
                 'password_again.same' => 'รหัสผ่านยืนยันไม่ตรงกัน'
             )
         );

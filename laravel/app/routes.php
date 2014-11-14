@@ -19,22 +19,39 @@
 Route::get('/',["uses" => 'SiteController@indexAction']);
 //[skeleton]/app/controllers/SiteController.php
 
-Route::get("/login",[
-    "as" => "login",
-    "uses" => "UsersController@indexAction"
-]);
-Route::post('/login', [
-    "as" => "login",
-    "uses" => "UsersController@loginAction"
-]);
-Route::get('/register', [
-    "as" => "register",
-    "uses" => "UsersController@registershowAction"
-]); 
-Route::post('/register', [
-    "as" => "register",
-    "uses" => "UsersController@registerAction"
-]);
+/*
+ Unauthentication group
+*/
+
+Route::group(array('before' => 'guest'), function(){
+    Route::get("/login",[
+        "as" => "login",
+        "uses" => "UsersController@indexAction"
+    ]);
+    Route::get('/register', [
+        "as" => "register",
+        "uses" => "UsersController@registershowAction"
+    ]);
+
+    /*
+    | CSRF Protection group
+    */
+
+    Route::group(array('before' => 'csrf' ), function(){
+        Route::post('/login', [
+            "as" => "login",
+            "uses" => "UsersController@loginAction"
+        ]); 
+        Route::post('/register', [
+            "as" => "register",
+            "uses" => "UsersController@registerAction"
+        ]);
+    });
+});
+
+/*
+| User Route
+*/
 
 Route::group(array('prefix' => 'user'), function()
 {
@@ -100,5 +117,9 @@ Route::group(array('prefix' => 'recipe'), function()
     Route::post("/edit",[
         "as" => "edit-recipe",
         "uses" => "RecipeController@createAction"
+    ]);
+    Route::get("/show/{id}",[
+    "as" => "show-recipe",
+    "uses" => "RecipeController@showRecipeAction"
     ]);
 });
