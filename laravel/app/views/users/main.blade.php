@@ -1,6 +1,7 @@
 @extends("layouts.masterProfile")
 @section("content")
 <div class="container">
+  <br>
     <div class="row">
         <div class="col-lg-12">
             <div class="container" id="main">
@@ -8,11 +9,11 @@
    <div class="col-md-4 col-sm-6">
         <div class="panel panel-default">
 	        <div class="panel-heading"><a href="{{ route('editProfile') }}" class="pull-right" > 
-	          	<span class="glyphicon glyphicon-wrench"></span> Edit </a> <h4>Profile</h4>
+	          	<span class="glyphicon glyphicon-wrench"></span> แก้ไข </a> <h4>Profile</h4>
 	        </div>
    			<div class="panel-body">
 
-              	<img class="img-circle" width="60" src = {{"../../app/storage/pic/user/".Auth::user()->profilePicture}} > <a href="{{ route('profile') }}">{{Auth::user()->name}}</a><p><span class="label label-info">10 recipes</span></p> 
+              	<a href="{{ route('profile') }}"><img class="img-circle" width="60" src = {{"../../app/storage/pic/user/".Auth::user()->profilePicture}} ></a> <a href="{{ route('profile') }}"> <b>{{ Auth::user()->name}}</b></a>
               	<div class="clearfix"></div>
             </div>
    		</div>

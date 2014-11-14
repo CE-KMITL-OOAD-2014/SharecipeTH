@@ -38,7 +38,7 @@ class RecipeController extends BaseController {
 
             }
             else {
-                $picture = 'empty-dish.jpg';
+                $picture = 'empty-dish.jpeg';
             }
             $name    = Input::get('name');
             $hour    = Input::get('timeH');
