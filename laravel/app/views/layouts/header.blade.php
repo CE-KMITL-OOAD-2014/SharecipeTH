@@ -27,16 +27,16 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="{{ route('register') }}">สมัครสมาชิก</a></li>
             </ul>
-  <!--search-->
-            <form class="navbar-form navbar-right" role="search">
+<!--search-->
+            {{ Form::open(array('url'=>'recipe/search','class'=>'navbar-form navbar-right','method' => 'GET')) }}
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="ค้นหา" name="srch-term" id="srch-term">
                 <div class="input-group-btn">
                   <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
               </div>
-            </form>
-  <!--end search-->
+            {{ Form::close() }}
+<!--end search-->
         </div>
       </div>
     </div>

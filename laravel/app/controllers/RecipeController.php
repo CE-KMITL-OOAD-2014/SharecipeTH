@@ -115,4 +115,12 @@ class RecipeController extends BaseController {
             return App::abort(404);
         }
     }
+    public function searchAction() {
+        if (Auth::check())
+        {
+            return View::make('recipes/search');
+        } else {
+            return Redirect::route('login');
+        }
+    }
 }

@@ -98,6 +98,9 @@ Route::post('report', [
     "uses" => "ReportController@reportAction"
 ]);
 
+/*
+| Recipe Route
+*/
 
 
 Route::group(array('prefix' => 'recipe'), function()
@@ -122,4 +125,12 @@ Route::group(array('prefix' => 'recipe'), function()
     "as" => "show-recipe",
     "uses" => "RecipeController@showRecipeAction"
     ]);
+    Route::get("/search",[
+    "as" => "search",
+    "uses" => "RecipeController@searchAction"
+    ]);
+    Route::get('method','BaseController@method');
+    Route::get('dropdown',function(){
+    return View::make('chosen');
+    });
 });
