@@ -115,7 +115,6 @@ class RecipeController extends BaseController {
             return App::abort(404);
         }
     }
-<<<<<<< HEAD
 
     public function commentAction(){
         $validator = Validator::make(Input::all(),
@@ -139,7 +138,7 @@ class RecipeController extends BaseController {
 
         return Redirect::to('recipe/show/'.$recipe);
         }   
-=======
+
     public function searchAction() {
         if (Auth::check())
         {
@@ -147,6 +146,5 @@ class RecipeController extends BaseController {
         } else {
             return Redirect::route('login');
         }
->>>>>>> 2d32f060ca0006f2b02b136df549e259326f354c
     }
 }
