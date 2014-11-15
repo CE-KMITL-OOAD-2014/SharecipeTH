@@ -81,14 +81,12 @@
     </div>
    
     <script type="text/javascript">
-
     $('#sl1').slider({
           formater: function(value) {
             return value+' ชม.';
           }
         });
     $('#sl1').slider('setValue', 0);
-
     $('#sl2').slider({
           formater: function(value) {
             return value+' นาที';
@@ -104,4 +102,3 @@
     </script>
    
 @stop
-
