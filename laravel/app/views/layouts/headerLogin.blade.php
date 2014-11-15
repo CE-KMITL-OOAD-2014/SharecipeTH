@@ -11,7 +11,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" rel="home" href="/laravel/public">SharecipeTH</a>
+          <a class="navbar-brand" rel="home" href="{{ route('home') }}">SharecipeTH</a>
         </div>
     
         <div class="collapse navbar-collapse">

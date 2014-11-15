@@ -7,6 +7,11 @@ class Ingredient extends Eloquent {
 	protected $table = 'ingredients';
 
 	protected $fillable = array('name','quantity', 'unit', 'recipe_id');
+
+	public function recipe()
+	{
+		return $this->belongsTo('Recipe');
+	}
 }
 /*class Ingredient {
 	private $name;

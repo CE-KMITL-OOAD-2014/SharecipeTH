@@ -15,4 +15,14 @@ class Recipe extends Eloquent {
 	{
 		return $this->hasMany('Ingredient');	
 	}
+
+	public function comment()
+	{
+		return $this->hasMany('Comment');	
+	}
+
+	public function user()
+	{
+		return $this->belongsTo('User','user_id');
+	}
 }

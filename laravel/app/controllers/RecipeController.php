@@ -115,4 +115,28 @@ class RecipeController extends BaseController {
             return App::abort(404);
         }
     }
+
+    public function commentAction(){
+        $validator = Validator::make(Input::all(),
+            array(
+            'comment' => 'required'
+            )
+        );
+        $recipe = Input::get('recipe_id');
+        if($validator->fails()){
+            
+            return Redirect::to('recipe/show/'.$recipe)->withErrors($validator);
+        }else{
+            $user = User::find(Auth::user()->id);
+            $text = Input::get('comment');
+            $comment = Comment::create(array(
+                'comment' => $text,
+                'user_id' => $user->id,
+                'recipe_id' => $recipe
+                )
+            );
+
+        return Redirect::to('recipe/show/'.$recipe);
+        }   
+    }
 }

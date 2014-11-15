@@ -1,4 +1,4 @@
-@extends("layouts.masterReport")
+@extends("layouts.masterProfile")
 @section("content")
 <div class="container">
   <hr>

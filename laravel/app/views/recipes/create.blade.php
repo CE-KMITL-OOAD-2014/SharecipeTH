@@ -64,16 +64,16 @@
                   <div id="ingredient"> <!-- add more ingredient --> </div> 
                 </div>
                 <div class="row">
-                <div class="col-lg-4">
-                  <button type="button" class="btn btn-primary btn-sm" onclick="toggler('ingredient');">เพิ่มส่วนผสม</button>
-                  <button type="button" class="btn btn-danger btn-sm" onclick="deToggler('ingredient');">ลบส่วนผสม</button>
-                </div>
+                  <div class="col-lg-4">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="toggler('ingredient');">เพิ่มส่วนผสม</button>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="deToggler('ingredient');">ลบส่วนผสม</button>
+                  </div>
                 </div>
                 <hr />
                 <div class="row">
-                <div class="form-actions">
-                  <input type="submit" value="สร้างเมนูอาหาร" class="btn btn-lg btn-success">
-                </div>
+                  <div class="form-actions">
+                    <input type="submit" value="สร้างเมนูอาหาร" class="btn btn-lg btn-success">
+                  </div>
                 </div>
             {{ Form::close() }}
             <br>

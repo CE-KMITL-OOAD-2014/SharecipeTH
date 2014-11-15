@@ -18,12 +18,12 @@
  
         <!-- CSS Bootstrap core CSS
         ================================================== -->
-        <link rel="stylesheet" type="text/css" href="../../../public/assets/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="../../assets/bootstrap/dist/css/bootstrap.min.css" />
         <!--<link rel="stylesheet" type="text/css" href="public/assets/bootstrap/css/jquery-ui-bootstrap.css" />
         <script type="text/javascript" src="public/assets/bootstrap/js/jquery.js"></script>
         <script type="text/javascript" src="public/assets/bootstrap/js/jquery-ui.min.js"></script>-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script type="text/javascript" src="../../../public/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../../assets/bootstrap/dist/js/bootstrap.min.js"></script>
          <style type="text/css">
             body {
                 padding-top: 50px;

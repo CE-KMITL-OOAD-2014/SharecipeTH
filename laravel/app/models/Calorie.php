@@ -6,4 +6,6 @@ class Calorie extends Eloquent {
 
 	protected $table = 'calories';
 
+	
+
 }

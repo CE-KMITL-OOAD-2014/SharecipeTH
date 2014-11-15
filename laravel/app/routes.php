@@ -16,7 +16,9 @@
 //	return View::make('hello');
 //});
 
-Route::get('/',["uses" => 'SiteController@indexAction']);
+Route::get('/',[
+    "as" => "home",
+    "uses" => 'SiteController@indexAction']);
 //[skeleton]/app/controllers/SiteController.php
 
 /*
@@ -83,19 +85,19 @@ Route::group(array('prefix' => 'user'), function()
         "as" => "remove-user",
         "uses" => "UsersController@removeAction"
     ]);
+    Route::get('/report', [
+        "as" => "report",
+        "uses" => "ReportController@reportShowAction"
+    ]); 
+    Route::post('/report', [
+        "as" => "report",
+        "uses" => "ReportController@reportAction"
+    ]);
 });
 // link for visitor to open another profile
 Route::get('profile/{username}', [
     "as" => "profile-user",
     "uses" => "UsersController@user"
-]);
-Route::get('report', [
-    "as" => "report",
-    "uses" => "ReportController@reportShowAction"
-]); 
-Route::post('report', [
-    "as" => "report",
-    "uses" => "ReportController@reportAction"
 ]);
 
 
@@ -121,5 +123,9 @@ Route::group(array('prefix' => 'recipe'), function()
     Route::get("/show/{id}",[
     "as" => "show-recipe",
     "uses" => "RecipeController@showRecipeAction"
+    ]);
+    Route::get("/comment",[
+        "as" => "comment-recipe",
+        "uses" => "RecipeController@commentAction"
     ]);
 });
