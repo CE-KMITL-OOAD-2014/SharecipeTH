@@ -4,7 +4,9 @@ class UsersController extends BaseController {
     protected $layout = 'layouts.main'; // กำหนด Layouts ที่ใช้งานเป็น main.blade.php
 
     public function mainAction() {
-        return View::make('users/main');
+        $recipeCount = Recipe::all()->count();
+        $recipes = Recipe::where('id','>',$recipeCount - 9)->get();
+        return View::make('users/main')->with('recipes',$recipes);
     }
 
     public function indexAction() {

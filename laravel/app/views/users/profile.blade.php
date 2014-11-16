@@ -97,10 +97,6 @@
                   <a href="{{'../recipe/show/'.$recipe['id']}}"><img src={{"../../app/storage/pic/recipe/".$recipe['recipe_picture']}} class="img-responsive"></div></a>
                 <div class="panel-body ">
                   <a href="{{'../recipe/show/'.$recipe['id']}}"><p class="lead text-center">{{$recipe['name']}}</p></a>
-                  <div class="row lead">
-                    <div id="stars" class="starrr"></div>
-                     <!--  <span id="count">0</span> star(s) -->
-                    </div>
                 </div>
               </div>
             </div><!--/col-->

@@ -38,13 +38,14 @@ class RecipeController extends BaseController {
 
             }
             else {
-                $picture = 'empty-dish.jpeg';
+                $picture = 'empty-dish.jpg';
             }
             $name    = Input::get('name');
             $hour    = Input::get('timeH');
             $minute  = Input::get('timeM');
             $method  = Input::get('method');
             $prepare = Input::get('prepare');
+            $time    = ($hour * 60) + $minute;
             //array
             $ingredients = Input::get('ingredient');
             $quantity    = Input::get('quantity');
@@ -55,6 +56,7 @@ class RecipeController extends BaseController {
                 'name'           => $name,
                 'time_hour'      => $hour,
                 'time_minute'    => $minute,
+                'time'           => $time,
                 'method'         => $method,
                 'prepare'        => $prepare,
                 'recipe_picture' => $picture
@@ -137,12 +139,69 @@ class RecipeController extends BaseController {
             );
 
         return Redirect::to('recipe/show/'.$recipe);
-        }   
+        }
+    }   
 
     public function searchAction() {
         if (Auth::check())
-        {
-            return View::make('recipes/search');
+        {   
+            $n = Input::get('name');
+            $time = Input::get('time');
+            if (Input::get('type') == '0') {
+            $m = null; // or 'NULL' for SQL
+            }else{
+                $m = Input::get('type');
+            }
+            if (Input::get('cal') =='0') {
+            $c = null; // or 'NULL' for SQL
+            }else{
+                $c = Input::get('cal');
+            }
+
+            if ($time == 1) {
+                $t1 = 0;
+                $t2 = 16;
+            }elseif ($time == 2) {
+                $t1 = 15;
+                $t2 = 31;
+            }elseif ($time == 3) {
+                $t1 = 30;
+                $t2 = 61;
+            }elseif ($time == 4) {
+                $t1 = 60;
+                $t2 = 91;
+            }elseif ($time == 5) {
+                $t1 = 90;
+                $t2 = 121;
+            }elseif ($time == 6) {
+                $t1 = 120;
+                $t2 = 151;
+            }elseif ($time == 7) {
+                $t1 = 150;
+                $t2 = 181;
+            }elseif ($time == 8) {
+                $t1 = 180;
+                $t2 = 211;
+            }elseif ($time == 9) {
+                $t1 = 210;
+                $t2 = 241;
+            }elseif ($time == 10) {
+                $t1 = 240;
+                $t2 = 271;
+            }elseif ($time == 11) {
+                $t1 = 270;
+                $t2 = 301;
+            }elseif ($time == 12) {
+                $t1 = 300;
+                $t2 = 780;
+            }else {
+                $t1 = null;
+                $t2 = null;
+            }
+
+            $recipes = Recipe::whereRaw('name LIKE ? and method LIKE ? or time > ? and time < ? or cal < ?' ,array("%$n%","%$m%",$t1,$t2,$c))->get();
+                
+            return View::make('recipes/search')->with('recipes',$recipes);
         } else {
             return Redirect::route('login');
         }

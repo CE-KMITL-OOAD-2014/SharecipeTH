@@ -2,13 +2,6 @@
 @section("content")
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
 <div class="container">
-  <?php
-  /*$comment = $recipe->comment();
-  $user = $recipe->user();
-  return var_dump($user);
-  echo $user['name'];*/
-    // return var_dump($recipe->user);
-  ?>
   <br>
   <div class="modal fade" id="picture">
     <div class="modal-dialog modal-lg">
@@ -26,13 +19,15 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
-  <div class="row col-lg-8 col-lg-offset-2">
+  <div class="row col-lg-10 col-lg-offset-1">
     <div class="well">
       <div class="media">
       		 <a data-toggle="modal" data-target="#picture" ><img class="img-responsive col-lg-4" src={{"../../../app/storage/pic/recipe/".$recipe->recipe_picture}}></a>
     		<div class="media-body">
           <br>
-      		<h4 class="media-heading">{{$recipe->name}}</h4><hr>
+      		<h4 class="media-heading">{{$recipe->name}}
+          <small>By <b>{{$recipe->user->name}}</b></small>
+          </h4><hr>
           <ul class="list-inline list-unstyled">
             <li><span><i class="glyphicon glyphicon-time"></i> {{$recipe->time_hour}} ชม. {{$recipe->time_minute}} นาที</span></li>
             <li>|</li>
@@ -40,48 +35,67 @@
             <li>|</li>
             <li> 
               <span><div id="stars" class="starrr" data-rating='3'></div></span>
-            </li>   
+            </li>
+            <li>|</li>
+            <li>
+            <small>calories</small>
+            </li>  
+            <li>|</li>
+            <li>
+              <span class="label label-info">{{$recipe->ingredient()->count()}} ingredient(s)</span>
+            </li>
+            
   		    </ul>
-          <p class="text-right">By <b>{{$recipe->user->name}}</b></p>
+          
           <p>{{$recipe->prepare}}</p>
         </div>
       </div>
     </div>
   </div>
   <br>
-  <div class="row col-lg-6 col-lg-offset-3">
-  
-  <!-- Blog Comments -->
 
-    <!-- Comments Form -->
-  <div class="well">
-      <h4>คอมเมนต์เมนูอาหาร</h4>
-          {{ Form::open(array('url'=>'recipe/comment','method' => 'get')) }}
-          <div class="form-group">
-            <textarea class="form-control" rows="3" name="comment"></textarea>
-          </div>
-          <div class="form-group">
-            <input type="hidden" name="recipe_id" value="{{$recipe->id}}">
-          </div>
-          <input type="submit" value="โพสท์คอมเมนต์" class="btn btn-lg btn-success">
-       {{ Form::close() }}
+  <div class="well col-lg-offset-2 col-lg-8 ">
+  <h3>ส่วนผสม</h3>
+   @foreach($recipe->ingredient as $ingredient) 
+    <!-- <div class="well well-sm"> -->
+      <p><b>{{$ingredient->name}}</b>       {{$ingredient->quantity}}     <small>{{$ingredient->unit}}</small></p>
+       
+    <!-- </div> -->
+    @endforeach
   </div>
-  <hr>
+  <div class="row col-lg-8 col-md-8 col-sm-8 col-lg-offset-2 col-md-offset-2 col-sm-offset-2">
+  
   @foreach($recipe->comment as $comment) 
+  <!-- <div class="well well-sm"> -->
     <div class="media">
-    <div class="col-lg-3">
-      <a class="pull-left" href="#">
-          <img class="media-object img-responsive" src={{"../../../app/storage/pic/user/".$recipe->user->profilePicture}} >
+      <a href={{"../../profile/".$comment->user->username}}>
+        <img class="img-responsive col-lg-4 col-md-4 col-sm-4 col-xs-4" src={{"../../../app/storage/pic/user/".$comment->user->profilePicture}} >
       </a>
-      </div>
       <div class="media-body"> 
-          <h4 class="media-heading">{{$recipe->user->name}}
-              <small>{{$comment->created_at}}</small>
-          </h4>
-          {{$comment->comment}}
+        <h4 class="media-heading">{{$comment->user->name}}
+            <small>{{$comment->created_at}}</small>
+        </h4>
+        {{$comment->comment}}
       </div>
     </div>
+  <!-- </div> -->
   @endforeach
+  <hr>
+  <!-- Blog Comments -->
+    <!-- Comments Form -->
+    <div class="well">
+        <h4>คอมเมนต์เมนูอาหาร</h4>
+            {{ Form::open(array('url'=>'recipe/comment','method' => 'get')) }}
+            <div class="form-group">
+              <textarea class="form-control" rows="3" name="comment"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="hidden" name="recipe_id" value="{{$recipe->id}}">
+            </div>
+            <input type="submit" value="โพสท์คอมเมนต์" class="btn btn-lg btn-success">
+         {{ Form::close() }}
+    </div>
+    
 </div>
 
 <script type="text/javascript">
