@@ -19,6 +19,7 @@ class CreateRecipesTable extends Migration {
 			$table->string('name');
 			$table->integer('time_hour')->unsigned();
 			$table->integer('time_minute')->unsigned();
+			$table->integer('time');
 			$table->string('method');
 			$table->text('prepare');
 			$table->string('recipe_picture');

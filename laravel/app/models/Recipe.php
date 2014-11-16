@@ -6,10 +6,15 @@ class Recipe extends Eloquent {
 
 	protected $table = 'recipes';
 
-	protected $fillable = array('user_id', 'name', 'time_hour', 'time_minute', 'method', 'prepare', 'recipe_picture');
+	protected $fillable = array('id','user_id', 'name', 'time_hour', 'time_minute', 'time', 'method', 'prepare', 'recipe_picture');
 
 	// DEFINE RELATIONSHIPS --------------------------------------------------
 	// each Recipe HAS many Ingredient
+
+	public function score()
+	{
+		return $this->hasMany('Score');
+	}
 
 	public function ingredient()
 	{

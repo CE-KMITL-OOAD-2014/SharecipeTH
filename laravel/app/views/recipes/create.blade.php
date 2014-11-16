@@ -29,7 +29,7 @@
                   <div class="form-group col-lg-2">
                     <label for="inputHour">เวลาในการทำ (ชั่วโมง)</label>
                     <!-- <input type="text" class="form-control" name="timeH" placeholder="ชั่วโมง"> -->
-                    <input type="text" class="span2" name="timeH" data-slider-min="0" data-slider-max="24" value="0" id="sl1">
+                    <input type="text" class="span2" name="timeH" data-slider-min="0" data-slider-max="12" value="0" id="sl1">
                   </div><!-- /.col-lg-4 -->
                   <div class="form-group col-lg-2">
                   <label for="inputMintue"> นาที </label>
