@@ -11,7 +11,7 @@
           <h4 class="modal-title">Menu Picture</h4>
         </div>
         <div class="modal-body">
-          <p><img class="img-responsive" src = {{"../../../app/storage/pic/recipe/".$recipe->recipe_picture}} ></p>
+          <p><img class="img-responsive" src = {{ asset("pic/recipe/$recipe->recipe_picture")}} ></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -22,7 +22,7 @@
   <div class="row col-lg-10 col-lg-offset-1">
     <div class="well">
       <div class="media">
-      		 <a data-toggle="modal" data-target="#picture" ><img class="img-responsive col-lg-4" src={{"../../../app/storage/pic/recipe/".$recipe->recipe_picture}}></a>
+      		 <a data-toggle="modal" data-target="#picture" ><img class="img-responsive col-lg-4" src={{ asset("pic/recipe/$recipe->recipe_picture")}}></a>
     		<div class="media-body">
           <br>
       		<h4 class="media-heading">{{$recipe->name}}
@@ -67,9 +67,13 @@
   
   @foreach($recipe->comment as $comment) 
   <!-- <div class="well well-sm"> -->
+
     <div class="media">
+    <?php
+       $cuser = $comment->user;
+       ?>
       <a href={{"../../profile/".$comment->user->username}}>
-        <img class="img-responsive col-lg-4 col-md-4 col-sm-4 col-xs-4" src={{"../../../app/storage/pic/user/".$comment->user->profilePicture}} >
+        <img class="img-responsive col-lg-4 col-md-4 col-sm-4 col-xs-4" src={{ asset("/pic/user/$cuser->profilePicture") }} >
       </a>
       <div class="media-body"> 
         <h4 class="media-heading">{{$comment->user->name}}
@@ -85,17 +89,28 @@
     <!-- Comments Form -->
     <div class="well">
         <h4>คอมเมนต์เมนูอาหาร</h4>
-            {{ Form::open(array('url'=>'recipe/comment','method' => 'get')) }}
+            {{ Form::open(array('url'=>'recipe/comment','method' => 'post')) }}
             <div class="form-group">
               <textarea class="form-control" rows="3" name="comment"></textarea>
             </div>
             <div class="form-group">
               <input type="hidden" name="recipe_id" value="{{$recipe->id}}">
             </div>
+            <div class="row">
+              <div class=" col-lg-3 pull-right">
+              <label><b>กรุณาให้คะแนน</b></label>
+                <select class="form-control " name="point">
+                  <option value="1" selected="selected">1 คะแนน</option>
+                  <option value="2">2 คะแนน</option>
+                  <option value="3">3 คะแนน</option>
+                  <option value="4">4 คะแนน</option>
+                  <option value="5">5 คะแนน</option>
+                </select>
+              </div>
+            </div>
             <input type="submit" value="โพสท์คอมเมนต์" class="btn btn-lg btn-success">
          {{ Form::close() }}
-    </div>
-    
+    </div>   
 </div>
 
 <script type="text/javascript">

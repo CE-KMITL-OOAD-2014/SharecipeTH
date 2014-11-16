@@ -13,7 +13,12 @@ class Recipe extends Eloquent {
 
 	public function score()
 	{
-		return $this->hasMany('Score');
+		return $this->hasOne('Score');
+	}
+
+	public function rate()
+	{
+		return $this->hasMany('Rate');
 	}
 
 	public function ingredient()

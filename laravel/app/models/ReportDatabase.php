@@ -1,6 +1,6 @@
 <?php
 
-class Report extends Eloquent {
+class ReportDatabase extends Eloquent {
 
 	public $timestamps = false;
 

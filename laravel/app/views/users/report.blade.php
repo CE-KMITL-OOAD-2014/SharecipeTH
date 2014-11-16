@@ -2,7 +2,7 @@
 @section("content")
 <div class="container">
   <hr>
-    {{ Form::open(array('url'=>'report','method' => 'post')) }}
+    {{ Form::open(array('url'=>'user/report','method' => 'post')) }}
     @if(Session::has('error'))
       <div class="row">
         <div class="form-group col-lg-6">

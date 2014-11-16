@@ -15,7 +15,6 @@ class CommentRepository
 			return false;
 		}*/
 	} 
-
 	// new comment
 	public static function newComment(){
 		$comment = new CommentDatabase();

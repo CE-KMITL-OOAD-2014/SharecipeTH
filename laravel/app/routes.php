@@ -128,7 +128,7 @@ Route::group(array('prefix' => 'recipe'), function()
     "uses" => "RecipeController@showRecipeAction"
     ]);
 
-    Route::get("/comment",[
+    Route::post("/comment",[
         "as" => "comment-recipe",
         "uses" => "RecipeController@commentAction"
     ]);
@@ -137,8 +137,4 @@ Route::group(array('prefix' => 'recipe'), function()
     "as" => "search",
     "uses" => "RecipeController@searchAction"
     ]);
-    Route::get('method','BaseController@method');
-    Route::get('dropdown',function(){
-    return View::make('chosen');
-    });
 });

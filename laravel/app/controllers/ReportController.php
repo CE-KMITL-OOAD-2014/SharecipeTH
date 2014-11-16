@@ -13,16 +13,19 @@ class ReportController extends BaseController {
         $validator = Validator::make(Input::all(),array('report' => 'required'));
         
         if($validator->fails()){
-            return Redirect::to('report')->with('error', 'กรุณาใส่ข้อความ');
+            return Redirect::to('user/report')->with('error', 'กรุณาใส่ข้อความ');
         }else{
             $text = Input::get('report');
             $name = Auth::user()->username;
             
-            $report = Report::create(array(
-                'report' => $text,
-                'username' => $name
-                )
-            );
+        /*
+        | call class Report
+        */
+            $report = new Report;
+            $report->setReport($text);
+            $report->setUsername($name);
+            $report->newReport();
+
 
             return Redirect::to('user/profile')->with('success', 'ขอบคุณสำหรับข้อเสนอแนะ');
         }

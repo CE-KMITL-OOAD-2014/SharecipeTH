@@ -1,4 +1,5 @@
 <?php
+
 class Comment extends Eloquent {
 
 	protected $table = 'comments';
@@ -18,38 +19,59 @@ class Comment extends Eloquent {
 
 /*class Comment {
 
-	private $text;
-	private $recipe;
+	private $id;
+	private $comment;
+	private $recipe_id;
+	private $user_id;
 
 	function __construct() {
-		$this->text = null;
-		$this->recipe = null;
+		$this->id = null;
+		$this->comment = null;
+		$this->recipeId = null;
+		$this->userId = null;
 	}
 
-	public function setText($value)
+	public function setId($value)
 	{
-		$this->text = $value;
+		$this->id = $value;
 	}
-	public function setRecipe($value)
+	public function setComment($value)
 	{
-		$this->recipe = $value;
+		$this->comment = $value;
 	}
-
-	public function getText()
+	public function setRecipeId($value)
 	{
-		return $this->text;
+		$this->recipeId = $value;
 	}
-	public function getRecipe()
+	public function setUserId($value)
 	{
-		return $this->recipe;
+		$this->userId = $value;
+	}
+	
+	public function getId()
+	{
+		return $this->id;
+	}
+	public function getComment()
+	{
+		return $this->comment;
+	}
+	public function getRecipeId()
+	{
+		return $this->recipeId;
+	}
+	public function getUserId()
+	{
+		return $this->userId;
 	}
 
 	public static function getComment($id){
 		if(CommentRepository::isExist($id)){
 			$comment = new Comment();
 			$comment->setId($id);
-			$comment->setText(CommentRepository::getText($id));
-			$comment->setRecipe(CommentRepository::getRecipe($id));
+			$comment->setComment(CommentRepository::getText($id));
+			$comment->setRecipeId(CommentRepository::getRecipeId($id));
+			$comment->setUserId(CommentRepository::getUserId($id));
 			return $comment;
 		}
 		else {
@@ -59,10 +81,63 @@ class Comment extends Eloquent {
 
 	public function setComment(){
 		if(CommentRepository::isExist($this->id)){
-			CommentRepository::setText($this->id,$this->text);
-			CommentRepository::setRecipe($this->id,$this->recipe);
-		}
+			CommentRepository::setComment($this->id,$this->comment);
+			CommentRepository::setRecipeId($this->id,$this->recipeId);
+			CommentRepository::setUserId($this->id,$this->userId);
+		}	
 		else {
+		}
+	}
+
+	public function newComment()
+	{
+		$comment = new commentDatabase;
+		$comment->comment=$this->comment;
+		$comment->user_id=$this->userId;
+		$comment->recipe_id=$this->recipeId;
+		$comment->save();
+	}
+
+	public function deleteComment()
+	{
+		$comment = commentDatabase::find($this->id);
+		$comment->delete();
+	}
+
+	public static function getFromId($id)
+	{
+		$comment = commentDatabase::find($id);
+           
+            if($comment==NULL){
+                return NULL;
+            }else{        
+	            $com = new Comment;
+	            $com->id = $comment->id;
+	            $com->comment = $comment->comment;
+	            $com->recipeId = $comment->recipeId;
+	            $com->userId = $comment->userId;
+	            return $com;
+        	}
+	}
+
+	public static function getFromRecipe($recipeid)
+	{
+		$comment = commentDatabase::where('recipe_id','=',$recipeId)->get();
+		$size = count($comment);
+
+		if($data == NULL){
+			return NULL;
+		}else{
+			$comments = array();
+			for($i = 0;$i < $size;$i++){
+				$obj = new Comment;
+				$obj->id = $data[$i]->id;
+            	$obj->comment = $data[$i]->comment;
+            	$obj->recipeId = $data[$i]->recipeId;
+            	$obj->userId = $data[$i]->userId;
+            	$comments[$i] = $obj;
+			}
+		return $comments;
 		}
 	}
 }*/

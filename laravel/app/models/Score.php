@@ -6,5 +6,10 @@ class Score extends Eloquent {
 
 	protected $table = 'scores';
 
-	protected $fillable = array('score', 'recipe_id');
+	protected $fillable = array('scoreSum', 'scoreAvg','rateCount','recipe_id');
+
+		public function recipe()
+	{
+		return $this->belongTo('recipe');	
+	}
 }

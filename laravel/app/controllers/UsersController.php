@@ -78,7 +78,7 @@ class UsersController extends BaseController {
             //check when user upload image
             if(Input::hasfile('profilePicture')){
                 $file = Input::file('profilePicture');
-                $path = storage_path('pic/user/'); 
+                $path = public_path('pic/user/'); 
                 $ext = $file->guessExtension();
                 $newFilename = Input::get('username').".".$ext;
                 $upload = $file->move($path,$newFilename);       
@@ -164,7 +164,7 @@ class UsersController extends BaseController {
             }
             if(Input::hasfile('profilePicture')){
                 $file = Input::file('profilePicture');
-                $path = storage_path('pic/user/'); 
+                $path = public_path('pic/user/');
                 $ext = $file->guessExtension();
                 $picture = $user->username.".".$ext;
                 File::delete($path,$picture);
@@ -195,8 +195,10 @@ class UsersController extends BaseController {
             return Redirect::to('user/remove')->withErrors($validator);
         }else{
             $user = User::find(Auth::user()->id);
+            $path = public_path('pic/user/');
+            $picture = $user->username.".".$ext;
+            File::delete($path,$picture);
             $user->delete();
-
             return Redirect::to('/');
         }
     }

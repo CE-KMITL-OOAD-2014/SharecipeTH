@@ -76,7 +76,7 @@
             <div class="col-sm-3 col-xs-6">
               <div class="panel panel-default">
                 <div class="panel-thumbnail">
-                  <a href="{{'../recipe/show/'.$recipe['id']}}"><img src={{"../../app/storage/pic/recipe/".$recipe['recipe_picture']}} class="img-responsive"></div></a>
+                  <a href="{{'../recipe/show/'.$recipe['id']}}"><img src={{ asset("pic/recipe/$recipe->recipe_picture")}} class="img-responsive"></div></a>
                 <div class="panel-body ">
                   <a href="{{'../recipe/show/'.$recipe['id']}}"><p class="lead text-center">{{$recipe['name']}}</p></a>
                 </div>

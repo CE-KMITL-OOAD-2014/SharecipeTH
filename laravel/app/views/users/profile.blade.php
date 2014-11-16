@@ -36,7 +36,7 @@
           <h4 class="modal-title">Profile Picture</h4>
         </div>
         <div class="modal-body">
-          <p><img class="img-responsive" src = {{"../../app/storage/pic/user/".$user->profilePicture}} ></p>
+          <p><img class="img-responsive" src = {{ asset("/pic/user/$user->profilePicture")}} ></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -54,7 +54,7 @@
                 <span class="glyphicon glyphicon-wrench"></span> แก้ไข </a> <h4>Profile</h4>
               </div>
               <div class="panel-body">
-                <a data-toggle="modal" data-target="#picture" ><img class="img-circle "  width="150" src = {{"../../app/storage/pic/user/".$user->profilePicture}} ></a> <a href="{{ route('profile') }}"><b>{{$user->name}}</b></a> <span class="label label-info">{{$user->recipe()->count()}} recipe(s)</span>
+                <a data-toggle="modal" data-target="#picture" ><img class="img-circle "  width="150" src = {{asset("/pic/user/$user->profilePicture")}} ></a> <a href="{{ route('profile') }}"><b>{{$user->name}}</b></a> <span class="label label-info">{{$user->recipe()->count()}} recipe(s)</span>
                 <div class="clearfix"></div>
                 <hr>
                 <div class="panel-group col-lg-6" id="accordion" role="tablist" aria-multiselectable="true">
@@ -94,7 +94,7 @@
             <div class="col-sm-3 col-xs-6">
               <div class="panel panel-default">
                 <div class="panel-thumbnail">
-                  <a href="{{'../recipe/show/'.$recipe['id']}}"><img src={{"../../app/storage/pic/recipe/".$recipe['recipe_picture']}} class="img-responsive"></div></a>
+                  <a href="{{'../recipe/show/'.$recipe['id']}}"><img src={{ asset("pic/recipe/$recipe->recipe_picture")}} class="img-responsive"></div></a>
                 <div class="panel-body ">
                   <a href="{{'../recipe/show/'.$recipe['id']}}"><p class="lead text-center">{{$recipe['name']}}</p></a>
                 </div>

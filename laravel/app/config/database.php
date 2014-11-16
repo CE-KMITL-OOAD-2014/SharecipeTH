@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'sharecipe',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'Guide25248',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

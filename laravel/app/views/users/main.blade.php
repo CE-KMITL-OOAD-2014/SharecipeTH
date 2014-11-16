@@ -1,6 +1,10 @@
 @extends("layouts.masterProfile")
 @section("content")
 <div class="container">
+<?php
+    $user = Auth::user();
+    // $recipes = $user->recipe->toArray();
+  ?>
    <br>
    <div class="row">
       <div class="col-lg-12">
@@ -12,7 +16,7 @@
                         <span class="glyphicon glyphicon-wrench"></span> แก้ไข </a> <h4>Profile</h4>
                      </div>
                		<div class="panel-body">
-                        <a href="{{ route('profile') }}"><img class="img-circle" width="60" src = {{"../../app/storage/pic/user/".Auth::user()->profilePicture}} ></a> <a href="{{ route('profile') }}"> <b>{{ Auth::user()->name}}</b></a>
+                        <a href="{{ route('profile') }}"><img class="img-circle" width="60" src = {{asset("/pic/user/$user->profilePicture")}} ></a> <a href="{{ route('profile') }}"> <b>{{ Auth::user()->name}}</b></a>
                         <div class="clearfix"></div>
                      </div>
                	</div>
@@ -38,7 +42,7 @@
             <div class="col-sm-3 col-xs-3">
                <div class="panel panel-default">
                   <div class="panel-thumbnail " align="center">
-                     <a href="{{'../recipe/show/'.$recipe['id']}}"><img src={{"../../app/storage/pic/recipe/".$recipe['recipe_picture']}} class="img-responsive"></a>
+                     <a href="{{'../recipe/show/'.$recipe['id']}}"><img src={{ asset("pic/recipe/$recipe->recipe_picture")}} class="img-responsive"></a>
                   </div>
                   <div class="panel-body ">
                      <a href="{{'../recipe/show/'.$recipe['id']}}"><p class="lead text-center">{{$recipe['name']}}</p></a>

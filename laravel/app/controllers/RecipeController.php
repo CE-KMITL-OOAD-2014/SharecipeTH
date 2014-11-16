@@ -30,7 +30,7 @@ class RecipeController extends BaseController {
             $user = User::find(Auth::user()->id);
             if(Input::hasfile('recipePicture')){
                 $file = Input::file('recipePicture');
-                $path = storage_path('pic/recipe/'); 
+                $path = public_path('pic/recipe/'); 
                 $ext = $file->guessExtension();
                 $newFilename = time()."_".str_random(20).".".$ext;
                 $upload = $file->move($path,$newFilename);       
@@ -74,8 +74,15 @@ class RecipeController extends BaseController {
                 );
 
                 $count++;
-
             }        
+
+            $score = Score::create(array(
+                'scoreSum' => 0,
+                'scoreAvg' => 0,
+                'rateCount' => 0,
+                'recipe_id' => $recipe->id
+                )
+            );
         return Redirect::to('user/profile');
         }
     }
@@ -198,8 +205,8 @@ class RecipeController extends BaseController {
                 $t1 = null;
                 $t2 = null;
             }
-
-            $recipes = Recipe::whereRaw('name LIKE ? and method LIKE ? or time > ? and time < ? or cal < ?' ,array("%$n%","%$m%",$t1,$t2,$c))->get();
+            $recipes = Recipe::whereRaw('name LIKE ? and method LIKE ? or time > ? and time < ?' ,array("%$n%","%$m%",$t1,$t2))->get();
+            //$recipes = Recipe::whereRaw('name LIKE ? and method LIKE ? or time > ? and time < ? or cal < ?' ,array("%$n%","%$m%",$t1,$t2,$c))->get();
                 
             return View::make('recipes/search')->with('recipes',$recipes);
         } else {
