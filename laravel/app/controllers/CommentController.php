@@ -28,7 +28,7 @@ class CommentController extends BaseController {
                 )
             );
 
-            if($rate){
+            if($rate->count()){
                 $recipe->score->update(array('rateCount' => $recipe->score->rateCount + 1));
             } 
             $rscore=$recipe->score->get();
